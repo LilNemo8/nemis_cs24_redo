@@ -36,6 +36,7 @@ void Board::inputMove(std::string& input){
 
     enforceGameRules(move);
     inputLocation(move);
+    move_toString = move.to_string();
     switchPlayer();
 };
 
@@ -82,7 +83,8 @@ std::string Board::to_string(){
         result += "\n";
         if(i!=2) result +="   ---+---+---\n";
     }
-    result += '\n';
+    result +=  move_toString + '\n';
+    
 
     return result;
 };

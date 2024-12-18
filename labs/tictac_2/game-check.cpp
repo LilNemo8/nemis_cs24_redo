@@ -7,15 +7,16 @@
 
 
 int main(){
-    std::vector<std::string> files = 
-    {
-        "bad-line", "bad-move", "draw",
-        "new-game", "o-wins", "os-turn",
-        "x-wins", "xs-turn"
-    };
+  std::vector<std::pair<std::string, std::string>> files = {
+  {"bad-line", "FAIL"}, {"bad-move", "FAIL"}, {"draw", "SUCCESS"},
+  {"new-game", "SUCCESS"}, {"o-wins", "SUCCESS"}, {"os-wins", "SUCCESS"}, {"os-turn", "SUCCESS"},
+  {"x-wins", "SUCCESS"}, {"xs-turn", "SUCCESS"}
+  };
 
-    std::string route = "data/" + files[7] + ".ttt";
-    std::cout << "Testing: " << route << '\n';
+    size_t indexTest = 7;
+    std::string route = "data/" + files[indexTest].first + ".ttt";
+    std::cout << "Testing: " << route << " | Expected Result: " << files[indexTest].second << '\n';
+
 
     std::ifstream file(route); // Open the file
 
@@ -29,7 +30,6 @@ int main(){
     while (std::getline(file, line)) { // Read word by word
         try{
             board.inputMove(line);
-            std::cout << "Move: " << line << '\n'; 
             std::cout << board.to_string()<< '\n';
 
         }catch(const InvalidMove& e) {

@@ -9,14 +9,15 @@
 
 int main(int argc, char** argv) {
 
-  std::vector<std::string> files = 
-  {"bad-line", "bad-move", "draw",
-  "new-game", "o-wins", "os-wins", "os-turn",
-  "x-wins", "xs-turn"};
+  std::vector<std::pair<std::string, std::string>> files = {
+  {"bad-line", "FAIL"}, {"bad-move", "FAIL"}, {"draw", "SUCCESS"},
+  {"new-game", "SUCCESS"}, {"o-wins", "SUCCESS"}, {"os-wins", "SUCCESS"}, {"os-turn", "SUCCESS"},
+  {"x-wins", "SUCCESS"}, {"xs-turn", "SUCCESS"}
+  };
 
-
-  std::string route = "data/" + files[0] + ".ttt";
-  std::cout << "Testing: " << route << '\n';
+  size_t indexTest = 2;
+  std::string route = "data/" + files[indexTest].first + ".ttt";
+  std::cout << "Testing: " << route << " | Expected Result: " << files[indexTest].second << '\n';
 
   std::ifstream file(route); // Open the file
   if (!file) {

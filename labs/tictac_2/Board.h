@@ -14,6 +14,7 @@ class Board{
     char** board;
     char currentPlayer;
     int currentTurn;
+    std::string move_toString;
 
     char** initializeBoard(){
         char** temp = new char*[3];
