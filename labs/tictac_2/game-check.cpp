@@ -19,11 +19,11 @@ int main(){
 
 
     std::ifstream file(route); // Open the file
-
     if (!file) {
         std::cerr << "Error opening file." << std::endl;
         exit(1); // Exit if the file cannot be opened
     }
+
 
     Board board;
     std::string line;
